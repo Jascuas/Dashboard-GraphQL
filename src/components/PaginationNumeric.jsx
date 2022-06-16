@@ -1,6 +1,7 @@
 import React from 'react';
 
-function PaginationNumeric() {
+function PaginationNumeric({pagination}) {
+  console.log(pagination)
   return (
     <>
       <div className="flex justify-center">
@@ -15,19 +16,19 @@ function PaginationNumeric() {
           </div>
           <ul className="inline-flex text-sm font-medium -space-x-px shadow-sm">
             <li>
-              <span className="inline-flex items-center justify-center rounded-l leading-5 px-3.5 py-2 bg-white border border-slate-200 text-blue-500">1</span>
+              <span className="inline-flex items-center justify-center rounded-l leading-5 px-3.5 py-2 bg-white border border-slate-200 text-blue-500">{pagination?.currentPage}</span>
             </li>
             <li>
-              <a className="inline-flex items-center justify-center leading-5 px-3.5 py-2 bg-white hover:bg-blue-500 border border-slate-200 text-slate-600 hover:text-white" href="#0">2</a>
+              <a className="inline-flex items-center justify-center leading-5 px-3.5 py-2 bg-white hover:bg-blue-500 border border-slate-200 text-slate-600 hover:text-white" href="#0">{pagination?.nextPage}</a>
             </li>
             <li>
-              <a className="inline-flex items-center justify-center leading-5 px-3.5 py-2 bg-white hover:bg-blue-500 border border-slate-200 text-slate-600 hover:text-white" href="#0">3</a>
+              <a className="inline-flex items-center justify-center leading-5 px-3.5 py-2 bg-white hover:bg-blue-500 border border-slate-200 text-slate-600 hover:text-white" href="#0">{pagination && pagination?.nextPage + 1}</a>
             </li>
             <li>
               <span className="inline-flex items-center justify-center leading-5 px-3.5 py-2 bg-white border border-slate-200 text-slate-400">…</span>
             </li>
             <li>
-              <a className="inline-flex items-center justify-center rounded-r leading-5 px-3.5 py-2 bg-white hover:bg-blue-500 border border-slate-200 text-slate-600 hover:text-white" href="#0">9</a>
+              <a className="inline-flex items-center justify-center rounded-r leading-5 px-3.5 py-2 bg-white hover:bg-blue-500 border border-slate-200 text-slate-600 hover:text-white" href="#0">{pagination && pagination?.nextPage + 7}</a>
             </li>
           </ul>
           <div className="ml-2">
@@ -42,7 +43,7 @@ function PaginationNumeric() {
       </div>
       <div className="flex justify-center">
         <div className="text-sm text-slate-500 text-center sm:text-left py-2">
-          <span className="font-medium text-slate-600">1</span> a <span className="font-medium text-slate-600">10</span> de <span className="font-medium text-slate-600">467</span> resultados
+          <span className="font-medium text-slate-600">{pagination?.currentPage}</span> a <span className="font-medium text-slate-600">{pagination && pagination?.nextPage + 7}</span> de <span className="font-medium text-slate-600">{pagination?.totalPages}</span> resultados
         </div>
       </div>
     </>

@@ -54,8 +54,8 @@ function Products() {
         variables: { 
           // "tax_filter": ["es_general_21", "es_reduced_10"],
           // "title_filter": "",
-          // "order_by": "price",
-          // "order": "desc",
+          "order_by": "title",
+          "order": "asc",
           "page": 1,
           "per_page": 7
            }
@@ -102,9 +102,8 @@ function Products() {
               </div>
 
             </div>
-
             {/* Table */}
-            <ProductsTable products={data.results}/>
+            <ProductsTable products={data.results} totalProducts={data.pagination?.totalResults}/>
 
             {/* Pagination */}
             <div className="mt-8">
