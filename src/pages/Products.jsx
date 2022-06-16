@@ -23,6 +23,7 @@ function Products() {
     results(taxFilter: $tax_filter, titleFilter: $title_filter, orderBy: $order_by, order: $order, page: $page, perPage:
     $per_page) {
     id
+    sku
     title
     price
     tax
@@ -62,14 +63,13 @@ function Products() {
     })
       .then(res => res.json())
       .then((data) => {
-        setData(data)
+        setData(data.data.fetchProducts)
       } )
       .catch(console.error);
   };
   useEffect(() => {
     getData()
   }, [])
-  console.log(data)
   return (
     <div className="flex h-screen overflow-hidden">
 
@@ -104,11 +104,11 @@ function Products() {
             </div>
 
             {/* Table */}
-            <ProductsTable />
+            <ProductsTable products={data.results}/>
 
             {/* Pagination */}
             <div className="mt-8">
-              <PaginationNumeric />
+              <PaginationNumeric pagination={data.pagination}/>
             </div>
 
           </div>

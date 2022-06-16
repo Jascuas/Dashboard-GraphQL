@@ -2,27 +2,27 @@ import React from 'react';
 
 function ProductsTableItem(props) {
 
-  const totalColor = (status) => {
+  const stockColor = (status) => {
     switch (status) {
-      case 'Paid':
-        return 'text-emerald-500';
-      case 'Due':
-        return 'text-yellow-500';
-      case 'Overdue':
-        return 'text-rose-500';
+      case 0:
+        return 'bg-rose-100 text-rose-600';
       default:
-        return 'text-slate-500';
+        return 'bg-emerald-100 text-emerald-600';
     }
   };
 
-  const statusColor = (status) => {
+  const taxColor = (status) => {
     switch (status) {
-      case 'Paid':
-        return 'bg-emerald-100 text-emerald-600';
-      case 'Due':
+      case 'es_general_21':
+        return 'bg-indigo-100 text-indigo-600';
+      case 'fr_general_20':
+        return 'bg-sky-100 text-sky-600';
+      case 'es_reduced_10':
+        return 'bg-teal-100 text-teal-600';
+      case 'fr_reduced_5.5':
+        return 'bg-green-100 text-green-600';
+      case 'es_super-reduced_4':
         return 'bg-yellow-100 text-yellow-600';
-      case 'Overdue':
-        return 'bg-rose-100 text-rose-500';
       default:
         return 'bg-slate-100 text-slate-500';
     }
@@ -48,22 +48,19 @@ function ProductsTableItem(props) {
   return (
     <tr>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className="font-medium text-sky-500">{props.product}</div>
-      </td>    
-      <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className={`font-medium ${totalColor(props.status)}`}>{props.total}</div>
+        <div className="font-medium text-sky-500">{props.sku}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5 ${statusColor(props.status)}`}>{props.status}</div>
-      </td >    
-      <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className="font-medium text-slate-800">{props.customer}</div>
+        <div className="font-medium text-slate-500">{props.product}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div>{props.issueddate}</div>
+        <div className="font-semibold text-black">{props.price} €</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div>{props.paiddate}</div>
+        <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5 ${taxColor(props.tax)}`}>{props.tax}</div>
+      </td>
+      <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+        <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5 ${stockColor(props.stock)}`}>{props.stock === 0 ? "vacio": props.stock}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div className="flex items-center">
