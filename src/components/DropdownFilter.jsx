@@ -2,13 +2,25 @@ import React, { useState, useRef, useEffect } from 'react';
 import Transition from '../utils/Transition';
 
 function DropdownFilter({
-  align
+  align, seTaxFilters
 }) {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [checked, setChecked] = useState([]);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
+
+  function handleCheck (input) {
+    input.checked ? 
+    setChecked(checked => [...checked, input.value])
+    :
+    setChecked(checked.filter(item => item !== input.value))
+  }
+
+  function handleApply() {
+    console.log(checked)
+  }
 
   // close on click outside
   useEffect(() => {
@@ -61,38 +73,32 @@ function DropdownFilter({
           <ul className="mb-4">
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Direct VS Indirect</span>
+                <input type="checkbox" className="form-checkbox" value="es_general_21" onChange={e => handleCheck(e.target)}/>
+                <span className="text-sm font-medium ml-2">Es General 21</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Real Time Value</span>
+                <input type="checkbox" className="form-checkbox" value="es_reduced_10" onChange={e => handleCheck(e.target)}/>
+                <span className="text-sm font-medium ml-2">Es Reduced 10</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Top Channels</span>
+                <input type="checkbox" className="form-checkbox" value="es_super-reduced_4" onChange={e => handleCheck(e.target)}/>
+                <span className="text-sm font-medium ml-2">Es Super Reduced 4</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Sales VS Refunds</span>
+                <input type="checkbox" className="form-checkbox" value="fr_general_20" onChange={e => handleCheck(e.target)}/>
+                <span className="text-sm font-medium ml-2">FR General 20</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Last Order</span>
-              </label>
-            </li>
-            <li className="py-1 px-3">
-              <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Total Spent</span>
+                <input type="checkbox" className="form-checkbox" value="fr_reduced_5.5" onChange={e => handleCheck(e.target)}/>
+                <span className="text-sm font-medium ml-2">FR Reduced 5.5</span>
               </label>
             </li>
           </ul>
@@ -102,7 +108,7 @@ function DropdownFilter({
                 <button className="btn-xs bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600">Clear</button>
               </li>
               <li>
-                <button className="btn-xs bg-blue-500 hover:bg-blue-600 text-white" onClick={() => setDropdownOpen(false)} onBlur={() => setDropdownOpen(false)}>Apply</button>
+                <button className="btn-xs bg-blue-500 hover:bg-blue-600 text-white" onClick={() => {setDropdownOpen(false); seTaxFilters(checked)}} onBlur={() => setDropdownOpen(false)}>Apply</button>
               </li>
             </ul>
           </div>

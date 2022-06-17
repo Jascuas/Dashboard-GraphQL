@@ -1,7 +1,7 @@
 import React from 'react';
 
 function PaginationNumeric({pagination}) {
-  console.log(pagination)
+
   return (
     <>
       <div className="flex justify-center">
