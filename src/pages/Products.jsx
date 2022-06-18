@@ -76,10 +76,13 @@ function Products() {
 
   useEffect(() => {
     setPage(1)
-
     getData()
   }, [taxFilters, titleFilter, order, orderBy])
 
+  useEffect(() => {
+
+    getData()
+  }, [page])
   return (
     <div className="flex h-screen overflow-hidden">
 
@@ -117,7 +120,7 @@ function Products() {
 
             {/* Pagination */}
             <div className="mt-8">
-              <PaginationNumeric pagination={data.pagination}/>
+              <PaginationNumeric pagination={data.pagination} setPage={setPage}/>
             </div>
 
           </div>
