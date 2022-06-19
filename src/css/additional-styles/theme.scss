@@ -9,3 +9,21 @@
         @apply ring-0;
     }
 }
+
+@layer base {
+    //indigo theme default
+    :root {
+        --color-text-base: #e0e7ff;
+        --color-text-accent: #6366f1;
+        --color-fill-base: #e0e7ff;
+        --color-fill-accent: #6366f1;
+        --color-border: #a5b4fc;
+    }
+    .theme-blue {
+        --color-text-base: #dbeafe;
+        --color-text-accent: #3b82f6;
+        --color-fill-base: #dbeafe;
+        --color-fill-accent: #3b82f6;
+        --color-border: #93c5fd;
+    }
+}

@@ -22,7 +22,7 @@
         &:checked {
 
             + label {
-                @apply bg-indigo-500;
+                @apply bg-venped-accent;
 
                 > span:first-child {
                     left: 22px;

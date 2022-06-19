@@ -14,15 +14,15 @@ function ProductsTableItem(props) {
   const taxColor = (status) => {
     switch (status) {
       case 'es_general_21':
-        return 'bg-indigo-100 text-indigo-600';
+        return 'bg-venped-base text-venped-accent';
       case 'fr_general_20':
-        return 'bg-sky-100 text-sky-600';
+        return 'bg-sky-100 text-sky-500';
       case 'es_reduced_10':
-        return 'bg-teal-100 text-teal-600';
+        return 'bg-teal-100 text-teal-500';
       case 'fr_reduced_5.5':
-        return 'bg-green-100 text-green-600';
+        return 'bg-green-100 text-green-500';
       case 'es_super-reduced_4':
-        return 'bg-yellow-100 text-yellow-600';
+        return 'bg-yellow-100 text-yellow-500';
       default:
         return 'bg-slate-100 text-slate-500';
     }

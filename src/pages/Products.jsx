@@ -80,11 +80,10 @@ function Products() {
   }, [taxFilters, titleFilter, order, orderBy])
 
   useEffect(() => {
-
     getData()
   }, [page])
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden theme-blue">
 
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
